@@ -1,4 +1,7 @@
 import telebot 
+import sys
+import os
+sys.path.append(os.getcwd())
 from config import token
 
 from logic import Pokemon
@@ -15,5 +18,6 @@ def go(message):
         bot.reply_to(message, "Ты уже создал себе покемона")
 
 
-bot.infinity_polling(none_stop=True)
-
+if __name__ == "__main__":
+    bot.polling()
+    print("Работает.....")
