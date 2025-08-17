@@ -40,11 +40,20 @@ class Pokemon:
         url = f"https://pokeapi.co/api/v2/pokemon/{self.pokemon_number}"
         response = requests.get(url)
         if response.status_code == 200:
-            weight = response.json()
-            return "Высота твоего покемона - "(weight[weight])
+            data = response.json()
+            return (data['weight'])
         else:
             return "У твоего покемона 0 кг... странно как-то получается"
         
+    def get_height(self):
+        url = f"https://pokeapi.co/api/v2/pokemon/{self.pokemon_number}"
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = response.json()
+            return (data['height'])
+        else:
+            return "У твоего покемона 0 см... странно как-то получается"
+
     # Метод класса для получения информации
     def info(self):
         return f"Имя твоего покеомона: {self.name}"
