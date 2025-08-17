@@ -19,5 +19,5 @@ def go(message):
 
 
 if __name__ == "__main__":
-    bot.polling()
     print("Работает.....")
+    bot.polling()
