@@ -11,7 +11,7 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start','help'])
 def start(message):
-    bot.reply_to(message, """Наши команды: /go ,/start ,/help ,/feed, /info, /battle"""
+    bot.reply_to(message, """Наши команды: /go ,/start ,/help ,/feed, /info, /battle""")
 
 @bot.message_handler(commands=['go'])
 def go(message):
