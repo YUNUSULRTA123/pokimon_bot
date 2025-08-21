@@ -13,6 +13,11 @@ class Pokemon:
         self.name = self.get_name()
         self.weight = self.get_weight()
         self.height = self.get_height()
+        self.bonus = self.get_bonus()
+        self.xp = 0
+        self.feed = 0 
+        self.level = 1
+        self.xp_to_level = 10
 
         Pokemon.pokemons[pokemon_trainer] = self
 
@@ -36,6 +41,17 @@ class Pokemon:
         else:
             return "Не удалось узнать имя твоего глупого покемона:("
 
+    def get_bonus(self):
+        url = f'https://pokeapi.co/api/v2/pokemon/{self.pokemon_number}'
+        response = requests.get(url)
+        if response.status_code == 200:
+            if 900 < self.pokemon_number < 1001:
+                rand_bonus = randint(1,100)
+                return f"У вас редкий покемон выполучаете + {rand_bonus}"
+            else:
+                TEXT = "Вы остались без бонусов :("
+                return TEXT
+            
     def get_weight(self):
         url = f"https://pokeapi.co/api/v2/pokemon/{self.pokemon_number}"
         response = requests.get(url)
@@ -54,12 +70,25 @@ class Pokemon:
         else:
             return "У твоего покемона 0 см... странно как-то получается"
 
-    # Метод класса для получения информации
-    def info(self):
-        return f"""Имя твоего покеомона: {self.name}
-Вес твоего покемона: {self.weight}
-Рост твоего покемона: {self.height}"""
+    def feed_pokimon(self):
+        rand_xp = randint(5, 20) 
+        self.feed += 1
+        self.xp += rand_xp
 
-    # Метод класса для получения картинки покемона
+        text = f"{self.name} покормлен! +{rand_xp} XP"
+
+        if self.xp >= self.xp_to_level:
+            self.level_up()
+            text += f"\n{self.name} поднялся до {self.level} уровня!"
+        return text
+
+    def level_up(self):
+        self.level += 1
+        self.xp = 0
+        self.xp_to_level = int(self.xp_to_level * 1.5)
+
+    def info(self):
+        return f"""Имя: {self.name}\nВес: {self.weight}\nРост: {self.height}\nБонусы: {self.bonus}\nУровень: {self.level}\nОпыт: {self.xp}/{self.xp_to_level}\nКормлений: {self.feed}"""
+
     def show_img(self):
         return self.img
