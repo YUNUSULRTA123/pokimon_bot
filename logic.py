@@ -15,6 +15,8 @@ class Pokemon:
         self.height = self.get_height()
         self.bonus = self.get_bonus()
         self.xp = 0
+        self.power = randint(1,50)
+        self.hp = randint(1,100)
         self.feed = 0 
         self.level = 1
         self.xp_to_level = 10
@@ -70,6 +72,18 @@ class Pokemon:
         else:
             return "У твоего покемона 0 см... странно как-то получается"
 
+    def attack(self, enemy):
+        if isinstance(enemy, Wizard): 
+            шанс = randint(1,5)
+            if шанс == 1:
+                return "Покемон-волшебник применил щит в сражении"
+        if enemy.hp > self.power:
+            enemy.hp -= self.power
+            return f"Сражение @{self.pokemon_trainer} с @{enemy.pokemon_trainer}"
+        else:
+            enemy.hp = 0
+            return f"Победа @{self.pokemon_trainer} над @{enemy.pokemon_trainer}! "
+    
     def feed_pokimon(self):
         rand_xp = randint(5, 20) 
         self.feed += 1
@@ -88,7 +102,31 @@ class Pokemon:
         self.xp_to_level = int(self.xp_to_level * 1.5)
 
     def info(self):
-        return f"""Имя: {self.name}\nВес: {self.weight}\nРост: {self.height}\nБонусы: {self.bonus}\nУровень: {self.level}\nОпыт: {self.xp}/{self.xp_to_level}\nКормлений: {self.feed}"""
+        return f"Имя: {self.name}\nВес: {self.weight}\nРост: {self.height}\nБонусы: {self.bonus}\nУровень: {self.level}\nХП: {self.xp}/{self.xp_to_level}\nКормлений: {self.feed}\nHP: {self.hp}\nСила:{self.power}"
 
     def show_img(self):
         return self.img
+    
+
+class Wizard(Pokemon):
+    def attack(self, enemy):
+        return super().attack(enemy)
+
+class Fighter(Pokemon):
+    def attack(self, enemy):
+        супер_сила = randint(5,15)
+        self.power += супер_сила
+        результат = super().attack(enemy)
+        self.power -= супер_сила
+
+        return результат + f"\nБоец применил супер-атаку силой:{супер_сила} "
+
+if __name__ == '__main__':
+    wizard = Wizard("username1")
+    fighter = Fighter("username2")
+
+    print(wizard.info())
+    print()
+    print(fighter.info())
+    print()
+    print(fighter.attack(wizard))
