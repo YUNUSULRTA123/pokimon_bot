@@ -11,12 +11,14 @@ bot = telebot.TeleBot(token)
 @bot.message_handler(commands=['start','help'])
 def start(message):
     bot.reply_to(message, """Наши команды: 
-/go - создать покемона
-/feed - покормить покемона
-/info - информация о покемоне
+/start или /help – 📖 помощь и начало
+/go или /pokimon – 🐣 создать покемона
+/feed – 🍎 покормить покемона
+/info – ℹ️ информация о покемоне
+/battle – ⚔️ сражение с другим покемоном
 """)
 
-@bot.message_handler(commands=['go'])
+@bot.message_handler(commands=['go','pokimon'])
 def start(message):
     if message.from_user.username not in Pokemon.pokemons.keys():
         chance = random.randint(1,3)
@@ -48,9 +50,9 @@ def feed_pokemon(message):
 @bot.message_handler(commands=["info"])
 def info(message):
     username = message.from_user.username
-    if username in Pokemon.pokemons:
-        pokemon = Pokemon.pokemons[username]
-        bot.send_message(message.chat.id, pokemon.info())
+    if message.from_user.username in Pokemon.pokemons.keys():
+        pok = Pokemon.pokemons[username]
+        bot.send_message(message.chat.id, pok.info())
     else:
         bot.reply_to(message, "У тебя пока нет покемона. Используй /go")
 
