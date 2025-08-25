@@ -26,4 +26,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ---
 
-For more information, please refer to [The Unlicense]([https://unlicense.org)
+For more information, please refer to [The Unlicense](https://unlicense.org)
