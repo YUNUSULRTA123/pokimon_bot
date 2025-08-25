@@ -76,7 +76,7 @@ pokemon_bot/
 <img width="861" height="134" alt="{B0B08F06-C0B7-4AF5-9DD7-74990864DBD8}" src="https://github.com/user-attachments/assets/da8f2dd3-8da2-4f40-9af5-582e5488ac68" />
 
 # QR-коды моего тг-бота
-<img width="100" height="500" alt="image" src="https://github.com/user-attachments/assets/0b320cf6-850a-45b5-9bf9-18847aab577b" />
+<img width="100" height="1000" alt="image" src="https://github.com/user-attachments/assets/0b320cf6-850a-45b5-9bf9-18847aab577b" />
 
 
 > Спасибо за внимание 🙏
