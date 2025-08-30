@@ -1,5 +1,6 @@
 from random import randint
 import requests
+from datetime import datetime, timedelta
 
 class Pokemon:
     pokemons = {}
@@ -20,6 +21,7 @@ class Pokemon:
         self.feed = 0 
         self.level = 1
         self.xp_to_level = 10
+        self.last_feed_time = datetime.now()
 
         Pokemon.pokemons[pokemon_trainer] = self
 
@@ -84,6 +86,16 @@ class Pokemon:
             enemy.hp = 0
             return f"Победа @{self.pokemon_trainer} над @{enemy.pokemon_trainer}! "
     
+    def eat(self, feed_interval = 20, hp_increase = 10 ):
+        current_time = datetime.now()  
+        delta_time = timedelta(seconds=feed_interval)  
+        if (current_time - self.last_feed_time) > delta_time:
+            self.hp += hp_increase
+            self.last_feed_time = current_time
+            return f"Здоровье покемона увеличено. Текущее здоровье: {self.hp}"
+        else:
+            return f"Следующее время кормления покемона: {self.last_feed_time+delta_time}"
+
     def feed_pokimon(self):
         rand_xp = randint(5, 20) 
         self.feed += 1
@@ -111,6 +123,8 @@ class Pokemon:
 class Wizard(Pokemon):
     def attack(self, enemy):
         return super().attack(enemy)
+    def eat(self, feed_interval = 15, hp_increase = 20):
+        super().eat(feed_interval,hp_increase)
 
 class Fighter(Pokemon):
     def attack(self, enemy):
@@ -120,6 +134,9 @@ class Fighter(Pokemon):
         self.power -= супер_сила
 
         return результат + f"\nБоец применил супер-атаку силой:{супер_сила} "
+    
+    def eat(self, feed_interval = 10, hp_increase = 5):
+        super().eat(feed_interval,hp_increase)
 
 if __name__ == '__main__':
     wizard = Wizard("username1")
