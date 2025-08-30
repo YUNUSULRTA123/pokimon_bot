@@ -10,13 +10,13 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start','help'])
 def start(message):
-    bot.reply_to(message, """Наши команды: 
+    bot.reply_to(message, """**⭐Наши команды:** 
 /start или /help – 📖 помощь и начало
 /go или /pokimon – 🐣 создать покемона
 /feed – 🍎 покормить покемона
 /info – ℹ️ информация о покемоне
 /battle – ⚔️ сражение с другим покемоном
-""")
+""", parse_mode="Markdown")
 
 @bot.message_handler(commands=['go','pokimon'])
 def start(message):
