@@ -8,10 +8,11 @@
 
 ## 🚀 Возможности
 
-- 🟢 **/go** – создать покемона (один на пользователя)
+- 🟢 **/go** и **/pokimon** – создать покемона (один на пользователя)
 - 🥣 **/feed** – покормить покемона (рандомно срабатывает)
 - ℹ️ **/info** – узнать всё о своём покемоне
 - 🆘 **/start** и **/help** – инструкция по командам
+- ⚔️ **/attack** - напасть на игрока
 
 ---
 
@@ -75,8 +76,11 @@ pokemon_bot/
 <img width="844" height="135" alt="{C1DABE37-95E8-439B-9680-ED45C358B803}" src="https://github.com/user-attachments/assets/bcfeea83-68cc-4b2c-9b49-f8ddc0a1e463" />
 <img width="861" height="134" alt="{B0B08F06-C0B7-4AF5-9DD7-74990864DBD8}" src="https://github.com/user-attachments/assets/da8f2dd3-8da2-4f40-9af5-582e5488ac68" />
 
+----
+
 # QR-коды моего тг-бота
 <img width="500" height="1000" alt="image" src="https://github.com/user-attachments/assets/0b320cf6-850a-45b5-9bf9-18847aab577b" />
 
+----
 
 > Спасибо за внимание 🙏
