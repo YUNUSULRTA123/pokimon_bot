@@ -3,12 +3,12 @@
 ## Supported Versions
 We only provide security updates for actively maintained versions of this project.
 
-```
+
 | Version | Supported          |
 | ------- | ------------------ |
 | 1.x     | ✅ Security updates |
 | 0.x     | ❌ End of life      |
-```
+
 
 ## Reporting a Vulnerability
 If you discover a security vulnerability, please **do not open a public issue**.  
